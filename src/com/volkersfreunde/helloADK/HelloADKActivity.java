@@ -69,6 +69,7 @@ public class HelloADKActivity extends Activity implements Runnable, OnSeekBarCha
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
 
+        // add-on library style. see http://developer.android.com/guide/topics/usb/accessory.html#usage
 		mUsbManager = UsbManager.getInstance(this);
 		mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(
 				ACTION_USB_PERMISSION), 0);
