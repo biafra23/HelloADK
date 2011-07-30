@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import android.widget.Toast;
 import com.android.future.usb.UsbAccessory;
 import com.android.future.usb.UsbManager;
 
@@ -22,7 +23,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class HelloADKActivity extends Activity implements Runnable, OnSeekBarChangeListener  {
 	
-	private static final String TAG = "DemoKit";
+	private static final String TAG = "HelloADK";
 
 	private static final String ACTION_USB_PERMISSION = "com.google.android.DemoKit.action.USB_PERMISSION";
 
@@ -184,7 +185,9 @@ public class HelloADKActivity extends Activity implements Runnable, OnSeekBarCha
 			try {
 				mOutputStream.write(buffer);
 			} catch (IOException e) {
-				Log.e(TAG, "write failed", e);
+                Log.e(TAG, "write failed", e);
+                Toast.makeText(this, "write failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                //TODO: reconnect oder Fehlermeldung
 			}
 		}
 	}
