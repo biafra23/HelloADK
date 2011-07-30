@@ -14,6 +14,7 @@ AndroidAccessory acc("Google, Inc.",
 		     "1.0",
 		     "http://www.android.com",
 		     "0000000012345678");
+
 void setup();
 void loop();
 void log(String msg);
@@ -68,12 +69,13 @@ void loop()
 		if (len > 0) {
                         log("msg[0]: "); logn(msg[0]);
                         log("msg[1]: "); logn(msg[1]);
-                        log("msg[2]: "); logn(msg[2]);
+                        
                         digitalWrite(LED_BUILTIN, HIGH);
 
 			// assumes only one command per packet
 			if (msg[0] == 0x2) {
                                 log("LED_RED command");
+                                log("msg[2]: "); logn(msg[2]);
 				if (msg[1] == 0x0)
 					analogWrite(LED_RED, msg[2]);
 			}
